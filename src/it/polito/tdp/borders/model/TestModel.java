@@ -1,12 +1,21 @@
 package it.polito.tdp.borders.model;
 
+import java.util.HashMap;
+import java.util.List;
+
+import it.polito.tdp.borders.db.BordersDAO;
+
 public class TestModel {
 
 	public static void main(String[] args) {
 
 		Model model = new Model();
-
-		System.out.println("TestModel -- TODO");
+		model.createGraph(2000);
+		HashMap<Integer, Country> idMap = new HashMap<>();
+		BordersDAO dao = new BordersDAO();
+		dao.loadAllCountries(idMap);
+		List<Country> countryRaggiungibili = model.countryRaggiundibiliDa(idMap.get(325));
+		System.out.print(countryRaggiungibili);
 		
 //		System.out.println("Creo il grafo relativo al 2000");
 //		model.createGraph(2000);
